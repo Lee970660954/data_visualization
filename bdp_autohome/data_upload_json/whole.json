@@ -1,0 +1,176 @@
+{
+	"result": {
+		"data": [
+			{	"category_id": "db",
+				"img_src": "image/db_1.png",
+				"category_name": "RDS For MySQL"
+			},
+			{
+				"category_id": "db",
+				"img_src": "image/db_2.png",
+				"category_name": "MySQL"
+			},
+			{
+				"category_id": "db",
+				"img_src": "image/db_3.png",
+				"category_name": "SQLServer"
+			},
+			{
+				"category_id": "db",
+				"img_src": "image/db_4.png",
+				"category_name": "Oracle"
+			},
+			{
+				"category_id": "db",
+				"img_src": "image/db_5.png",
+				"category_name": "Hive"
+			},
+			{
+				"category_id": "nm",
+				"img_src": "image/nm_1.png",
+				"category_name": "微信公众平台"
+			},
+			{
+				"category_id": "nm",
+				"img_src": "image/nm_2.png",
+				"category_name": "百度搜索推广"
+			},
+			{
+				"category_id": "nm",
+				"img_src": "image/nm_3.png",
+				"category_name": "微信小程序"
+			},
+			{
+				"category_id": "nm",
+				"img_src": "image/nm_4.png",
+				"category_name": "百度搜索推广（小户）"
+			},
+			{
+				"category_id": "nm",
+				"img_src": "image/nm_5.png",
+				"category_name": "网易新闻易效推广"
+			},
+			{
+				"category_id": "os",
+				"img_src": "image/os_1.png",
+				"category_name": "53客服"
+			},
+			{
+				"category_id": "os",
+				"img_src": "image/os_2.png",
+				"category_name": "快商通"
+			},
+			{
+				"category_id": "os",
+				"img_src": "image/os_3.png",
+				"category_name": "百度商桥2016"
+			},
+			{
+				"category_id": "os",
+				"img_src": "image/os_4.png",
+				"category_name": "TQ客服"
+			},
+			{
+				"category_id": "os",
+				"img_src": "image/os_5.png",
+				"category_name": "Live800"
+			},
+			{
+				"category_id": "ss",
+				"img_src": "image/ss_1.png",
+				"category_name": "BDP网站统计"
+			},
+			{
+				"category_id": "ss",
+				"img_src": "image/ss_2.png",
+				"category_name": "谷歌统计"
+			},
+			{
+				"category_id": "ss",
+				"img_src": "image/ss_3.png",
+				"category_name": "百度统计"
+			},
+			{
+				"category_id": "ss",
+				"img_src": "image/ss_4.png",
+				"category_name": "友盟应用统计"
+			},
+			{
+				"category_id": "ss",
+				"img_src": "image/ss_5.png",
+				"category_name": "GrowingIO"
+			},
+			{
+				"category_id": "bm",
+				"img_src": "image/bm_1.png",
+				"category_name": "八爪鱼"
+			},
+			{
+				"category_id": "bm_Excel",
+				"img_src": "image/bm_2.png",
+				"category_name": "Excel上传"
+			},
+			{
+				"category_id": "bm",
+				"img_src": "image/bm_3.png",
+				"category_name": "滴滴企业版"
+			},
+			{
+				"category_id": "bm",
+				"img_src": "image/bm_4.png",
+				"category_name": "携程商旅"
+			},
+			{
+				"category_id": "bm",
+				"img_src": "image/bm_5.png",
+				"category_name": "表单大师"
+			},
+			{
+				"category_id": "pb",
+				"img_src": "image/pb_1.png",
+				"category_name": "天气数据"
+			},
+			{	
+				"category_id": "pb",
+				"img_src": "image/pb_2.png",
+				"category_name": "居民收支数据"
+			},
+			{
+				"category_id": "pb",
+				"img_src": "image/pb_3.png",
+				"category_name": "人口数据"
+			},
+			{
+				"category_id": "pb",
+				"img_src": "image/pb_4.png",
+				"category_name": "国民经济数据"
+			},
+			{
+				"img_src": "image/pb_5.png",
+				"category_name": "移动应用排名数据"
+			},
+			{
+				"category_id": "st",
+				"img_src": "image/st_1.png",
+				"category_name": "文件同步宝"
+			},
+			{
+				"category_id": "st",
+				"img_src": "image/st_2.png",
+				"category_name": "BDP Excel Plugin"
+			},
+			{
+				"category_id": "st",
+				"img_src": "image/st_3.png",
+				"category_name": "同步客户端"
+			},
+			{
+				"category_id": "st",
+				"img_src": "image/st_4.png",
+				"category_name": "OpenAPI"
+			}
+		]
+	},
+	"returncode": 0,
+	"message": "ok"
+}

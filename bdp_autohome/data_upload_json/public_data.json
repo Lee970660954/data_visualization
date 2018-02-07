@@ -1,0 +1,33 @@
+{
+	"result": {
+		"data": [
+			{
+				"category_id": "pd",
+				"img_src": "image/pb_1.png",
+				"category_name": "天气数据"
+			},
+			{
+				"category_id": "pd",
+				"img_src": "image/pb_2.png",
+				"category_name": "居民收支数据"
+			},
+			{
+				"category_id": "pd",
+				"img_src": "image/pb_3.png",
+				"category_name": "人口数据"
+			},
+			{
+				"category_id": "pd",
+				"img_src": "image/pb_4.png",
+				"category_name": "国民经济数据"
+			},
+			{
+				"category_id": "pd",
+				"img_src": "image/pb_5.png",
+				"category_name": "移动应用排名数据"
+			}
+		]
+	},
+	"returncode": 0,
+	"message": "ok"
+}

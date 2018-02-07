@@ -1,0 +1,33 @@
+{
+	"result": {
+		"data": [
+			{
+				"category_id": "ss",
+				"img_src": "image/ss_1.png",
+				"category_name": "BDP网站统计"
+			},
+			{
+				"category_id": "ss",
+				"img_src": "image/ss_2.png",
+				"category_name": "谷歌统计"
+			},
+			{
+				"category_id": "ss",
+				"img_src": "image/ss_3.png",
+				"category_name": "百度统计"
+			},
+			{
+				"category_id": "ss",
+				"img_src": "image/ss_4.png",
+				"category_name": "友盟应用统计"
+			},
+			{
+				"category_id": "ss",
+				"img_src": "image/ss_5.png",
+				"category_name": "GrowingIO"
+			}
+		]
+	},
+	"returncode": 0,
+	"message": "ok"
+}

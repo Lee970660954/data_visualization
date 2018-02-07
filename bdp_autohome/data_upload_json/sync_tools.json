@@ -1,0 +1,28 @@
+{
+	"result": {
+		"data": [
+			{
+				"category_id": "st",
+				"img_src": "image/st_1.png",
+				"category_name": "文件同步宝"
+			},
+			{
+				"category_id": "st",
+				"img_src": "image/st_2.png",
+				"category_name": "BDP Excel Plugin"
+			},
+			{
+				"category_id": "st",
+				"img_src": "image/st_3.png",
+				"category_name": "同步客户端"
+			},
+			{
+				"category_id": "st",
+				"img_src": "image/st_4.png",
+				"category_name": "OpenAPI"
+			}
+		]
+	},
+	"returncode": 0,
+	"message": "ok"
+}

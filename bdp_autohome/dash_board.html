@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>dash_board</title>
+	<link rel="stylesheet" type="text/css" href="css/iview.css">
+	<link rel="stylesheet" type="text/css" href="css/dash_board.css">
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/iview.js"></script>
+</head>
+<body>
+	<header>
+		<h2 class="header-text">OlapX</h2>
+		<ul class="header-nav">
+			<li class="header-nav-item" data-selected="true" data-tab="dash-board"><div>仪表盘</div></li>
+			<li class="header-nav-item" data-selected="false" data-tab="work-sheet"><div>工作表</div></li>
+			<li class="header-nav-item" data-selected="false" data-tab="data-source"><div>数据源</div></li>
+			<li class="header-nav-item" data-selected="false" data-tab="chart-edit"><div>设计表</div></li>
+		</ul>
+	</header>
+	<div class="dial-body">
+		<div class="dial-left-container">
+			<div class="page-title">
+				<div class="page-title-name">仪表盘</div>
+				<div class="page-title-btn-container">
+					<a href="javascript:0" class="page-title-btn search-btn" data-btn="search"><i></i></a>
+					<a href="javascript:0" class="page-title-btn add-btn" data-btn="add"><i></i></a>
+					<a href="javascript:0" class="page-title-btn more-btn" data-btn="more"><i></i></a>
+					<ul class="btn-chooselayer-container">
+						<li class="search-chooselayer" data-btn="search">
+							<i-input icon="search" placeholder="输入名称搜索"></i-input>
+						</li>
+						<li class="add-chooselayer" data-btn="add">
+							<ul class="add-chooselayer-list">
+								<li class="add-chooselayer-item" @click = "createfolder">创建文件夹</li>
+								<li class="add-chooselayer-item" @click = "createdail">创建仪表盘</li>
+							</ul>
+						</li>
+						<li class="more-chooselayer" data-btn="more">
+							<ul class="more-chooselayer-list">
+								<li class="more-chooselayer-item more-close">收起全部</li>
+								<li class="more-chooselayer-item more-open">展开全部</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="mainmenu-container">
+				<div class="mainmenu-dialmenu">
+					<div class="mainmenu-index" v-for = "(value,key) in tableObj">
+						<p class="mainmenu-name" data-show="false">
+							<i></i>
+							<span>{{key}}</span>
+						</p>
+						<ul class="dialmenu">
+							<li v-for = "tableArrItem in value" class="dialmenu-item"><i class="dialmenu-item-btn"></i><span>{{tableArrItem}}</span><i class="dialmenu-item-more"></i>
+							<div class="dialmenu-item-layer-container" data-show="false">
+								<ul class="dialmenu-item-layer">
+									<li class="dialmenu-item-edit">编辑</li>
+									<li class="dialmenu-item-copy">复制</li>
+									<li class="dialmenu-item-move">移动</li>
+									<li class="dialmenu-item-delete">删除</li>
+								</ul>
+							</div>
+							</li>
+						</ul>
+					</div>		
+				</div>
+			</div>
+		</div>
+		<div class="dial-right-container">
+			<div class="dial-box-title">
+				<span>网站订单分析</span>
+				<ul class="dial-box-toolbars">
+					<li class="box-tool add-chart">
+						<i></i>
+						<span @click = "addChart">添加图表</span>
+					</li>
+					<li class="box-tool chart-design">
+						<i class=""></i>
+						<span>设计</span>
+					</li>
+					<li class="box-tool chart-share">
+						<i></i>
+						<span>查看分享</span>
+					</li>
+				</ul>
+			</div>
+			<div class="dial-box-container">				
+				<ul id="dial-box-content" class='clearfix'>
+		            <li class="dial-item-table">
+		            	<div class="dial-item-header">
+		            		<span class="dial-item-title">title</span>
+		            		<ul class="dial-item-tools">
+		            			<li class="tool-refresh"><i><Icon type="loop" size=16></Icon></i></li>
+		            			<li class="tool-edit"><i><Icon type="edit" size=16></Icon></i></li>
+		            			<li class="tool-scale"><i><Icon type="android-expand" size=16></Icon></Icon></i></li>
+		            			<li class="tool-update"><i><Icon type="refresh" size=16></Icon></i></li>
+		            			<li class="tool-warn"><i><Icon type="android-notifications-none" size=16></Icon></i></li>
+		            			<li class="tool-highsort"><i><Icon type="arrow-down-c" size=16></Icon></i></li>
+		            			<li class="tool-more"><i><Icon type="android-more-vertical" size=16></Icon></i></li>
+		            		</ul>
+		            	</div>
+		            	<div class="dial-item-body">
+		            		<div class="dial-item-chart">
+		            			图表
+		            		</div>
+		            	</div>
+		            </li>
+		            <li class="dial-item-table">
+		            	<div class="dial-item-header">
+		            		<span class="dial-item-title">title</span>
+		            		<ul class="dial-item-tools">
+		            			<li class="tool-refresh"><i><Icon type="loop" size=16></Icon></i></li>
+		            			<li class="tool-edit"><i><Icon type="edit" size=16></Icon></i></li>
+		            			<li class="tool-scale"><i><Icon type="android-expand" size=16></Icon></Icon></i></li>
+		            			<li class="tool-update"><i><Icon type="refresh" size=16></Icon></i></li>
+		            			<li class="tool-warn"><i><Icon type="android-notifications-none" size=16></Icon></i></li>
+		            			<li class="tool-highsort"><i><Icon type="arrow-down-c" size=16></Icon></i></li>
+		            			<li class="tool-more"><i><Icon type="android-more-vertical" size=16></Icon></i></li>
+		            		</ul>
+		            	</div>
+		            	<div class="dial-item-body">
+		            		<div class="dial-item-chart">
+		            			图表
+		            		</div>
+		            	</div>
+		            </li>
+		            <li class="dial-item-table">
+		            	<div class="dial-item-header">
+		            		<span class="dial-item-title">title</span>
+		            		<ul class="dial-item-tools">
+		            			<li class="tool-refresh"><i><Icon type="loop" size=16></Icon></i></li>
+		            			<li class="tool-edit"><i><Icon type="edit" size=16></Icon></i></li>
+		            			<li class="tool-scale"><i><Icon type="android-expand" size=16></Icon></Icon></i></li>
+		            			<li class="tool-update"><i><Icon type="refresh" size=16></Icon></i></li>
+		            			<li class="tool-warn"><i><Icon type="android-notifications-none" size=16></Icon></i></li>
+		            			<li class="tool-highsort"><i><Icon type="arrow-down-c" size=16></Icon></i></li>
+		            			<li class="tool-more"><i><Icon type="android-more-vertical" size=16></Icon></i></li>
+		            		</ul>
+		            	</div>
+		            	<div class="dial-item-body">
+		            		<div class="dial-item-chart">
+		            			图表
+		            		</div>
+		            	</div>
+		            </li>
+		            <li class="dial-item-table">
+		            	<div class="dial-item-header">
+		            		<span class="dial-item-title">title</span>
+		            		<ul class="dial-item-tools">
+		            			<li class="tool-refresh"><i><Icon type="loop" size=16></Icon></i></li>
+		            			<li class="tool-edit"><i><Icon type="edit" size=16></Icon></i></li>
+		            			<li class="tool-scale"><i><Icon type="android-expand" size=16></Icon></Icon></i></li>
+		            			<li class="tool-update"><i><Icon type="refresh" size=16></Icon></i></li>
+		            			<li class="tool-warn"><i><Icon type="android-notifications-none" size=16></Icon></i></li>
+		            			<li class="tool-highsort"><i><Icon type="arrow-down-c" size=16></Icon></i></li>
+		            			<li class="tool-more"><i><Icon type="android-more-vertical" size=16></Icon></i></li>
+		            		</ul>
+		            	</div>
+		            	<div class="dial-item-body">
+		            		<div class="dial-item-chart">
+		            			图表
+		            		</div>
+		            	</div>
+		            </li>
+		            <li class="dial-item-table">
+		            	<div class="dial-item-header">
+		            		<span class="dial-item-title">title</span>
+		            		<ul class="dial-item-tools">
+		            			<li class="tool-refresh"><i><Icon type="loop" size=16></Icon></i></li>
+		            			<li class="tool-edit"><i><Icon type="edit" size=16></Icon></i></li>
+		            			<li class="tool-scale"><i><Icon type="android-expand" size=16></Icon></Icon></i></li>
+		            			<li class="tool-update"><i><Icon type="refresh" size=16></Icon></i></li>
+		            			<li class="tool-warn"><i><Icon type="android-notifications-none" size=16></Icon></i></li>
+		            			<li class="tool-highsort"><i><Icon type="arrow-down-c" size=16></Icon></i></li>
+		            			<li class="tool-more"><i><Icon type="android-more-vertical" size=16></Icon></i></li>
+		            		</ul>
+		            	</div>
+		            	<div class="dial-item-body">
+		            		<div class="dial-item-chart">
+		            			图表
+		            		</div>
+		            	</div>
+		            </li>
+		            <li class="dial-item-table">
+		            	<div class="dial-item-header">
+		            		<span class="dial-item-title">111</span>
+		            		<ul class="dial-item-tools">
+		            			<li title="a" class="tool-refresh"><i><Icon type="loop" size=16></Icon></i></li>
+		            			<li class="tool-edit"><i><Icon type="edit" size=16></Icon></i></li>
+		            			<li class="tool-scale"><i><Icon type="android-expand" size=16></Icon></Icon></i></li>
+		            			<li class="tool-update"><i><Icon type="refresh" size=16></Icon></i></li>
+		            			<li class="tool-warn"><i><Icon type="android-notifications-none" size=16></Icon></i></li>
+		            			<li class="tool-highsort"><i><Icon type="arrow-down-c" size=16></Icon></i></li>
+		            			<li class="tool-more"><i><Icon type="android-more-vertical" size=16></Icon></i></li>
+		            		</ul>
+		            	</div>
+		            	<div class="dial-item-body">
+		            		<div class="dial-item-chart">
+		            			图表
+		            		</div>
+		            	</div>
+		            </li>
+		            <li class="dial-item-table">
+		            	<div class="dial-item-header">
+		            		<span class="dial-item-title">title</span>
+		            		<ul class="dial-item-tools">
+		            			<li class="tool-refresh"><i><Icon type="loop" size=16></Icon></i></li>
+		            			<li class="tool-edit"><i><Icon type="edit" size=16></Icon></i></li>
+		            			<li class="tool-scale"><i><Icon type="android-expand" size=16></Icon></Icon></i></li>
+		            			<li class="tool-update"><i><Icon type="refresh" size=16></Icon></i></li>
+		            			<li class="tool-warn"><i><Icon type="android-notifications-none" size=16></Icon></i></li>
+		            			<li class="tool-highsort"><i><Icon type="arrow-down-c" size=16></Icon></i></li>
+		            			<li class="tool-more"><i><Icon type="android-more-vertical" size=16></Icon></i></li>
+		            		</ul>
+		            	</div>
+		            	<div class="dial-item-body">
+		            		<div class="dial-item-chart">
+		            			图表
+		            		</div>
+		            	</div>
+		            </li>
+		        </ul>  	
+			</div>
+		</div>
+		<div class="layer-table-container" v-show="layerAddTableShow">
+			<div class="layer-table-content">
+				<div class="layer-table-header">
+					<span>添加图表</span>
+					<i class="layer-table-closebtn" @click = "addChart"></i>
+				</div>
+				<div class="layer-table-body">
+					<div class="select-table-class">
+						<p>选择图表类型</p>
+						<ul class="clearfix">
+							<li class="normal-table-class" data-show="false"><i></i><span>普通图表</span></li>
+							<li class="map-table-class" data-show="false"><i></i><span>经纬度地图</span></li>
+						</ul>
+					</div>
+					<div class="select-table-item">
+						<p>选择工作表</p>
+						<i-input icon="search"></i-input>
+						<ul class="item-index">
+							<li v-for = "(value,key) in tableObj">
+								<div class="item-index-folder" data-show="false">
+									<i class="select-index-icon"></i>
+									<span>{{key}}</span>
+								</div>
+								<ul class="item-table">
+									<li  data-show="false" class="select-table-li" v-for = "tableArrItem in value"><i class="item-table-nselected"></i><span>{{tableArrItem}}</span></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="layer-table-footer">
+					<button class="layer-btn-com">确认</button>
+					<button @click = "addChart">取消</button>
+				</div>
+			</div>
+		</div>
+		<div class="layer-createfolder-container" v-show="layerAddFolderShow">
+			<div class="layer-createfolder-content">
+				<div class="layer-createfolder-header">
+					<span class="layer-createfolder-header-title">
+						新建文件夹
+					</span>
+					<i class="layer-createfolder-header-closebtn" @click = "createfolder"></i>
+				</div>
+				<div class="layer-createfolder-body">
+					<div class="createfolder-location">
+						<span class="createfolder-location-title">所属文件夹</span>
+						<div class="createfolder-location-input">
+							<div class="createfolder-location-inputvalue"></div>
+							<i class="createfolder-location-downbtn"></i>
+						</div>
+						<!-- <div class="createfolder-location-menu">
+							<i></i>
+							<ul class="createfolder-location-list">
+								<li>根目录</li>
+								<li>仪表盘示例</li>
+							</ul>
+						</div> -->
+					</div>
+					<div class="createfolder-name">
+						<span class="createfolder-name-title">文件夹名称</span>
+						<div class="createfolder-name-input">
+							<i-input icon="edit"></i-input>
+						</div>
+					</div>
+				</div>
+				<div class="layer-createfolder-footer clearfix">
+					<button class="createfolder-cancel" @click = "createfolder">取消</button>
+					<button class="createfolder-submit">确定</button>
+				</div>
+			</div>
+		</div>
+		<div class="layer-createdail-container" v-show="layerAddDailShow">
+			<div class="layer-createdail-content">
+				<div class="layer-createdail-header">
+					<span class="layer-createdail-header-title">
+						新建仪表盘
+					</span>
+					<i class="layer-createdail-header-closebtn" @click = "createdail"></i>
+				</div>
+				<div class="layer-createdail-body">
+					<div class="createdail-foldername">
+						<span class="createdail-foldername-title">文件夹名称</span>
+						<div class="createdail-foldername-input">
+							<div class="createdail-foldername-inputvalue"></div>
+							<i class="createdail-foldername-downbtn"></i>
+						</div>
+					</div>
+					<div class="createdail-dialname">
+						<span class="createdail-dialname-title">仪表盘名称</span>
+						<div class="createdail-dialname-input">
+							<i-input icon="edit"></i-input>
+						</div>
+					</div>
+					<div class="createdail-dialclass">
+						<span class="createdail-dialclass-title">仪表盘类型</span>
+						<div class="createdail-dialclass-input">
+							<label><input name="dialClass" type="radio" value="普通仪表盘" />普通仪表盘</label>
+							<label><input name="dialClass" type="radio" value="高级仪表盘" />高级仪表盘</label> 
+						</div>
+						<div class="createdail-dialclass-img"></div>
+					</div>
+					<div class="createdail-dialtag">
+						<span class="createdail-dialtag-title">分类标签</span>
+						<div class="createdail-dialtag-input">
+							<i-input icon="edit"></i-input>
+						</div>
+					</div>
+					<div class="createdail-dialremark">
+						<span class="createdail-dialremark-title">仪表盘备注</span>
+						<div class="createdail-dialremark-input">
+							<i-input type="textarea"></i-input>
+						</div>
+					</div>
+				</div>
+				<div class="layer-createdail-footer clearfix">
+					<button @click = "createdail">取消</button>
+					<button class="layer-btn-com">确认</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/vue-resource.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/dash_board.js"></script>
+	<!-- <script type="text/javascript" src="js/drag.js"></script> -->
+</body>
+</html>

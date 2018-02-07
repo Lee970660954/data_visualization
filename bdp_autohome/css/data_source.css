@@ -1,0 +1,231 @@
+/*style reset*/
+*{
+	margin: 0;
+	padding: 0;
+}
+html{
+	height: 100%;
+}
+body{
+	height: 100%;
+	font-size: 12px;
+	font-weight: 400;
+	color: rgba(10,18,32,.64);
+	background: #E8EBED;
+	font-family: 'PingFang SC','Helvetica Neue',Helvetica,STHeitiSC-Light,WOL_SB,'Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,sans-serif;
+}
+ul,ol{
+	list-style: none;
+}
+i{
+	color: rgba(10,18,32,.64);
+}
+a{
+	color: rgba(10,18,32,.64);
+}
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+/*header style*/
+header{
+	width: 100%;
+	height: 40px;
+	background: #F0F2F3;
+	position: fixed;
+	line-height: 40px;
+	box-shadow: 0 0 6px 0 rgba(0,0,0,.1), 0 10px 12px 0 rgba(170,182,206,.2), inset 0 -1px 0 0 rgba(255,255,255,.3);
+	z-index: 2;
+}
+.btn-back{
+	position: absolute;
+	left: 24px;
+}
+.icon-back{
+	margin-top: 18px;
+}
+.header-text{
+	text-align: center;
+	width: 100px;
+	height: 40px;
+	position: absolute;
+	left: 60px;
+	font-size: 22px;
+	line-height: 40px;
+}
+.header-nav{
+	position: absolute;
+	left: 220px;
+}
+.header-nav-item{
+	float: left;
+	color: rgba(10,18,32,.64);
+	border-bottom: 1px solid #F0F2F3;
+    background-color:  #F0F2F3;
+    transition: all .2s ease-in-out;
+}
+.header-nav-item:hover{
+	color: #5182E4;
+    background-color: #FFF;
+}
+.header-nav-item>div{
+	height: 39px;
+	cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    margin:0 16px; 
+}
+
+/*source container style*/
+.source-container{
+	padding: 40px 24px 0;
+	height: calc(100% - 40px);
+}
+.source-container i{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background: url(https://m1.bdp.cn/static/theme/light/svg-build/svg-sprite_bf5e540.svg) no-repeat;
+}
+.source-header{
+	line-height: 64px;
+}
+.source-heaer-title{
+	font-size: 22px;
+	display: inline-block;
+}
+.source-header-detial{
+	margin-left: 32px;
+	display: inline-block;
+}
+.add-data-source{
+	float: right;
+	position: relative;
+	cursor: pointer;
+}
+.add-data-source>i{
+	background-position: -304px -1008px;
+	position: absolute;
+	top: 24px;	
+}
+.add-data-source>span{
+	margin-left: 20px;
+}
+.add-data-source>span:hover{
+	border-bottom: 1px solid rgb(81, 130, 228);
+}
+.source-header-item{
+	float: left;
+	width: 20%;
+	height: 80px;
+	cursor: pointer;
+}
+.item-container:hover{
+	border: 2px solid rgb(81, 130, 228);
+}
+.item-container{
+	padding: 16px 0;
+    margin: 0 5px;
+    background: #ffffff;
+    text-align: center;
+}
+.item-content>li{
+	height: 25px;
+}
+.item-amount{
+	font-size: 20px;
+}
+.source-body{
+	margin-top: 16px;
+	background-color: #f3f5f6;
+	height: calc(100% - 180px);
+}
+.source-body-left{
+	width: 200px;
+	height: 100%;
+	box-shadow: 1px 1px 1px;
+	float: left;
+}
+.source-body-left-top{
+	padding-left: 16px;
+	height: 32px;
+	line-height: 32px;
+	font-weight: 700;
+	position: relative;
+}
+.source-body-left-top .source-body-left-search{
+	background-position: -80px -992px;
+	position: absolute;
+	right: 16px;
+	top: 8px;
+	cursor: pointer;
+}
+.source-body-left-bottom{
+	position: relative;
+	height: calc(100% - 32px);
+	overflow-y: auto;
+}
+.source-body-left-list{
+	margin-top: 10px;
+}
+.source-body-left-item{
+	padding-left: 24px;
+	height: 32px;
+	line-height: 32px;
+	position: relative;
+	cursor: pointer;
+}
+.source-body-left-itemnum{
+	position: absolute;
+	right: 16px;
+}
+.source-body-right{
+	margin-left: 200px;
+}
+.source-body-content{
+	padding: 16px 24px;
+}
+.source-body-table{
+	width: 100%;
+}
+.source-body-table th{
+	padding: 8px 16px;
+	text-align: left;
+	position: relative;
+	background: #ECEFF1;
+}
+.source-body-table td{
+	padding: 16px;
+	position: relative;
+}
+.th-name{
+	width: 45%;
+}
+.th-sync{
+	width: 150px;
+}
+.source-body-table th i{
+	background-position: -720px -992px;
+	position: absolute;
+	top: 8px;
+}
+.td-name{
+	width: 45%;
+}
+.td-sync{
+	width: 150px;
+}
+.td-name-img{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background: url(../image/db_8003_small.png) no-repeat;
+	background-size: cover;
+}
+.td-name-link{
+	display: inline-block;
+	margin-left: 6px;
+	position: absolute;
+	top: 28px;
+}

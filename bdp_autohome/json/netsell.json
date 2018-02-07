@@ -1,0 +1,20 @@
+{
+	"result": {
+		"data": [
+			{
+				"img_src": "image/db_47_big.png",
+				"category_name": "EXCEL"
+			},
+			{
+				"img_src": "image/logo.jpg",
+				"category_name": "汽车之家"
+			},
+			{
+				"img_src": "image/logo.jpg",
+				"category_name": "汽车之家"
+			}
+		]
+	},
+	"returncode": 0,
+	"message": "ok"
+}

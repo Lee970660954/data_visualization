@@ -1,0 +1,33 @@
+{
+	"result": {
+		"data": [
+			{
+				"category_id": "os",
+				"img_src": "image/os_1.png",
+				"category_name": "53客服"
+			},
+			{
+				"category_id": "os",
+				"img_src": "image/os_2.png",
+				"category_name": "快商通"
+			},
+			{
+				"category_id": "os",
+				"img_src": "image/os_3.png",
+				"category_name": "百度商桥2016"
+			},
+			{
+				"category_id": "os",
+				"img_src": "image/os_4.png",
+				"category_name": "TQ客服"
+			},
+			{
+				"category_id": "os",
+				"img_src": "image/os_5.png",
+				"category_name": "Live800"
+			}
+		]
+	},
+	"returncode": 0,
+	"message": "ok"
+}

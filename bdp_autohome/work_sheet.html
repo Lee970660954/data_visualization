@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>work_sheet</title>
+	<link rel="stylesheet" type="text/css" href="css/iview.css">
+	<link rel="stylesheet" type="text/css" href="css/work_sheet.css">
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/iview.js"></script>
+</head>
+<body>
+	<header>
+		<h2 class="header-text">OlapX</h2>
+		<ul class="header-nav">
+			<li class="header-nav-item" data-selected="false" data-tab="dash-board"><div>仪表盘</div></li>
+			<li class="header-nav-item" data-selected="true" data-tab="work-sheet"><div>工作表</div></li>
+			<li class="header-nav-item" data-selected="false" data-tab="data-source"><div>数据源</div></li>
+			<li class="header-nav-item" data-selected="false" data-tab="chart-edit"><div>设计表</div></li>
+		</ul>
+	</header>
+	<div class="ws-body">
+		<div class="ws-left-container">
+			<div class="ws-left-top">
+				<div class="ws-left-title">
+					<p class="ws-left-title-name">工作表</p>
+					<div class="ws-left-title-btn">
+						<i class="title-addbtn"></i>
+						<i class="title-morebtn"></i>
+					</div>
+				</div>
+				<div class="ws-left-search">
+					<i-input v-model="value4" icon="search" placeholder="搜索..."></i-input>
+				</div>
+				<div class="ws-left-detailbtn">
+					<i></i>
+					<span>概况</span>
+				</div>
+			</div>
+			<div class="ws-left-bottom">
+				<!-- 默认显示用户的所有数据库以及对应数据库下的表 -->
+				<div class="folder-item folder-item-default">
+					<p class="folder-item-title">
+						<i class="folder-item-icon"></i>
+						<span class="folder-item-name">仪表盘示例</span>
+						<i class="folder-item-more"></i>
+					</p>
+					<ul class="table-list">
+						<li class="table-item">
+							<i class="table-item-icon"></i>
+							<span class="table-item-name">网站订单分析</span>
+							<i class="table-item-more"></i>
+						</li>
+					</ul>
+				</div>
+				<!-- 显示根据搜索框中的字段筛选出来的数据库或表 -->
+				<!-- <div class="folder-item folder-item-search">
+					<p class="folder-item-title">
+						<i class="folder-item-icon"></i>
+						<span class="folder-item-name"></span>
+					</p>
+					<ul class="table-list">
+						<li class="table-item">
+							<i class="table-item-icon"></i>
+							<span class="table-item-name"></span>
+						</li>
+					</ul>
+				</div> -->
+			</div>
+		</div>
+		<div class="ws-right-container"></div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/vue-resource.js"></script>
+	<script type="text/javascript" src="js/work_sheet.js"></script>
+</body>
+</html>

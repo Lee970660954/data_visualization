@@ -1,0 +1,28 @@
+{
+	"result": {
+		"data": [
+			{
+				"category": "公共数据",
+				"item_arr": [
+					{
+						"item_name": "人口数据",
+						"item_state": "同步完成",
+						"item_sync": "2017年11月10日"
+					}
+				]
+			},
+			{
+				"category": "微信指数",
+				"item_arr": [
+					{
+						"item_name": "微信指数",
+						"item_state": "同步完成",
+						"item_sync": "2017年11月11日"
+					}
+				]
+			}
+		]
+	},
+	"returncode": 0,
+	"message": "ok"
+}

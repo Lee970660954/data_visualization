@@ -1,0 +1,24 @@
+{
+	"returncode":0,
+	"message":"ok",
+	"result":{
+		"cost":14,
+		"data":[
+			{"name":"39782","value":12},
+			{"name":"39770","value":98},
+			{"name":"39713","value":92},
+			{"name":"39676","value":204},
+			{"name":"39653","value":35},
+			{"name":"39651","value":58},
+			{"name":"39646","value":118},
+			{"name":"39627","value":236},
+			{"name":"39618","value":56},
+			{"name":"39597","value":32},
+			{"name":"39594","value":248},
+			{"name":"39584","value":37},
+			{"name":"39582","value":254},
+			{"name":"39565","value":143},
+			{"name":"39562","value":16}
+		]
+	}
+}

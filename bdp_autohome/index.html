@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>chart_edit</title>
+	<!-- <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css"> -->
+	<link rel="stylesheet" type="text/css" href="css/iview.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script type="text/javascript" src="js/vue.js"></script>
+    <!-- <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script> -->
+    <!-- <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script> -->
+    <script type="text/javascript" src="js/iview.js"></script>
+</head>
+<body>
+	<header>
+		<h2 class="header-text">OlapX</h2>
+		<ul class="header-nav">
+			<li class="header-nav-item" data-selected="false" data-tab="dash-board"><div>仪表盘</div></li>
+			<li class="header-nav-item" data-selected="false" data-tab="work-sheet"><div>工作表</div></li>
+			<li class="header-nav-item" data-selected="false" data-tab="data-source"><div>数据源</div></li>
+			<li class="header-nav-item" data-selected="true" data-tab="chart-edit"><div>设计表</div></li>
+		</ul>
+	</header>
+	<div class="main-container">
+		<div class="main-left">
+			<div class="chart-data-info">
+				<h5 class="chart-data-title">
+					<span>工作表</span>
+				</h5>
+				<div class="chart-data-name">
+					<span v-on:click="layerPop" v-cloak>{{pageUrlParam.tbName}}</span>
+					<a class="chart-handle-switch">
+						<Icon type="arrow-swap"></Icon>
+					</a>
+				</div>
+			</div>
+			<div class="chart-filed-handle clearfix">
+				<div class="add-filed">
+					<span>字段</span>
+					<a class="add-filed-btn">
+						<Icon type="plus-round"></Icon>
+					</a>
+					<div class="add-filed-layer">
+						<p class="add-num-filed" @click = "showFiledLayer">添加计算字段</p>
+						<p class="add-str-filed">添加文本字段</p>
+					</div>
+				</div>
+				<div class="search-filed">
+					<form class="navbar-form navbar-left">
+		                <div class="form-group">
+		                    <!-- <input type="text" class="form-control" placeholder="Search">
+		                    <button type="submit" class="btn btn-default" id="search"><img src="image/search.png" alt=""/></button> -->
+		                    <i-input placeholder="搜索" type="text" icon="ios-search" v-model="bookSearchText" v-on:on-change="rendSearchResult" v-on:on-blur="searchResultShow = false">
+		                </div>
+            		</form>
+				</div>
+			</div>
+			<ul class="chart-filed-list" v-show="!searchResultShow" v-cloak>
+				<li class="filed-date chart-filed" draggable="true">
+					<a href="javascript:0">
+						<i class="filed-date-down" data-show="false"></i>
+						<i></i>
+						<span class="filed" draggable="true">日期</span>
+					</a>
+					<ul class="filed-date-list">
+						<li><i class="date-icon"></i><span>年</span></li>
+						<li><i class="date-icon"></i><span>季</span></li>
+						<li><i class="date-icon"></i><span>月</span></li>
+						<li><i class="date-icon"></i><span>周</span></li>
+						<li><i class="date-icon"></i><span>日</span></li>
+						<li><i class="date-icon"></i><span>时</span></li>
+						<li><i class="date-icon"></i><span>分</span></li>
+						<li><i class="date-icon"></i><span>秒</span></li>
+					</ul>
+				</li>
+				<!-- 数据类型为string的字段 -->
+				<li class="filed-text chart-filed" v-for="strDmsItem in strDmsData" draggable="true">
+					<a href="javascript:0">
+						<i></i>
+						<span class="filed">{{strDmsItem.name}}</span>
+					</a>
+				</li>
+				<!-- 数据类型为number的字段 -->
+				<li class="filed-num chart-filed" v-for="numDmsItem in numDmsData" draggable="true">
+					<a href="javascript:0">
+						<i></i>
+						<span class="filed">{{numDmsItem.name}}</span>
+					</a>
+				</li>
+			</ul>
+			<!-- 搜索框根据输入内容筛选字段 -->
+			<ul class="search-result" v-show="searchResultShow" v-cloak>
+				<!-- 数据类型为string的字段 -->
+				<li class="filed-text" v-for="strSearchResultItem in strSearchResult">
+					<a href="javascript:0">
+						<i></i>
+						<span class="filed" v-cloak v-text="strSearchResultItem.name"></span>
+					</a>
+				</li>
+				<!-- 数据类型为number的字段 -->
+				<li class="filed-num" v-for="numSearchResultItem in numSearchResult">
+					<a href="javascript:0">
+						<i></i>
+						<span class="filed" v-cloak v-text="numSearchResultItem.name"></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="main-middle">
+			<div class="main-middle-content">
+				<div class="main-args">
+					<div class="args-row arg-list-layer clearfix">
+						<div class="arg">
+							<span>图层</span>
+						</div>
+						<div class="arg-list">
+							<div class="main-filed-name">
+								<span>222222</span>
+								<i class="close-btn"></i>
+							</div>
+							<ul class="clearfix"></ul>
+						</div>
+					</div>
+					<div class="args-row clearfix">
+						<div class="arg">
+							<span>维度</span>
+							<a href="javascript:0"><Icon type="edit"></Icon></a>
+						</div>
+						<div class="arg-list arg-list-dms">
+							<ul class="clearfix"></ul>
+						</div>
+						<div class="compare-handle add-compare">
+							<a href="javascript:0"><Icon type="plus-circled" size="15"></Icon></a>
+							<span>添加对比</span>
+						</div>
+					</div>
+					<div class="args-row clearfix">
+						<div class="arg">
+							<span>对比</span>
+							<a href="javascript:0"><Icon type="edit"></Icon></a>
+						</div>
+						<div class="arg-list arg-list-dms-compare">
+							<ul class="clearfix"></ul>
+						</div>
+						<div class="remove-handle remove-compare">
+							<a href="javascript:0"><Icon type="minus-circled" size="15"></Icon></a>
+							<span>移除对比</span>
+						</div>
+					</div>
+					<div class="args-row clearfix">
+						<div class="arg">
+							<span>聚合</span>
+							<a href="javascript:0"><Icon type="edit"></Icon></a>
+						</div>
+						<div class="arg-list arg-list-count">
+							<ul class="clearfix"></ul>
+						</div>
+						<div class="compare-handle add-axis">
+							<a href="javascript:0"><Icon type="plus-circled" size="15"></Icon></a>
+							<span>添加次轴</span>
+						</div>
+					</div>
+					<div class="args-row clearfix">
+						<div class="arg">
+							<span>数值</span>
+							<a href="javascript:0"><Icon type="edit"></Icon></a>
+						</div>
+						<div class="arg-list arg-list-num">
+							<ul class="clearfix"></ul>
+						</div>
+						<div class="remove-handle remove-axis">
+							<a href="javascript:0"><Icon type="minus-circled" size="15"></Icon></a>
+							<span>移除次轴</span>
+						</div>
+					</div>
+				</div>
+			<div class="main-chart">
+				<div class="main-filter">
+					<div class="main-filter-title">
+						<span>筛选器</span>
+					</div>
+				<div class="main-filter-defaultshow">
+					<p>拖拽字段到这里进行筛选</p>
+				</div>
+				<ul class="main-filter-class"></ul>
+			</div>
+			<div class="mian-content">
+				<div class="main-chart-last">
+					<div class="data-response-time">
+						<span class="response-icon" data-show="true">
+							<Icon type="load-d" size="24"></Icon>
+						</span>
+						<span class="response-time" data-show="false">
+							<b>1.23</b>ms
+						</span>
+					</div>
+					<div class="data-refresh" data-refresh="false">
+						<Icon type="refresh" size="16" title="定时刷新数据"></Icon>
+					</div>
+					<a href="javascript:0" class="data-info-btn">
+						<Icon type="information-circled" size="16"></Icon>
+					</a>
+					<div class="data-info">
+						<p>
+							<span class="data-info-title">数据更新</span>
+						</p>
+						<p>
+							<span class="data-info-time">{{tableDetail.last_update}}</span>
+						</p>
+					</div>
+				</div>
+				<div class="chart-box-container clearfix">
+					<div class="echarts-box"></div>
+					<div class="chart-box">
+						<span>当前图表无数据</span>
+						<!-- <Spin fix>
+                			<Icon type="load-c" size=120 class="demo-spin-icon-load"></Icon>
+                			<div>Loading</div>
+            			</Spin> -->
+					</div>
+				</div>
+			</div>
+			</div>
+			</div>
+		</div>
+		<div class="main-right">
+			<div class="define-chart-title">
+			    <Collapse v-model="value1">
+			        <Panel name="1">
+			            图表标题
+			            <i-input placeholder="未命名图表" style="width: 300px" slot="content"></i-input>
+				    </Panel>
+			    </Collapse>
+			</div>
+			<div class="define-chart-style">
+				<Collapse v-model="value2">
+			        <Panel name="1">
+			            图表类型
+			            <ul slot="content">
+			            	<li><a href="javascript:0"><i class="s1"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s2"></i></a></li> 
+			            	<li><a href="javascript:0"><i class="s3"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s4"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s5"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s6"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s7"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s8"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s9"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s10"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s11"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s12"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s13"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s14"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s15"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s16"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s17"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s18"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s19"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s20"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s21"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s22"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s23"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s24"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s25"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s26"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s27"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s28"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s29"></i></a></li>
+			            	<li><a href="javascript:0"><i class="s30"></i></a></li>		
+			            </ul>
+				    </Panel>
+			    </Collapse>
+			</div>
+			<div class="define-chart-filter">
+				<span>图内筛选器</span>
+				<i></i>
+			</div>
+			<div class="define-chart-remark">
+				<Collapse v-model="value3">
+			        <Panel name="1">
+			            图表备注
+			            <textarea placeholder="在此添加备注..." style="width: 300px;height: 100px;" slot="content"></textarea>
+				    </Panel>
+			    </Collapse>
+			</div>
+		</div>
+		<div class="table-layer" v-show="layerShow" v-cloak>
+			<div class="table-layer-header">
+				<span class="table-layer-title">查看数据-销售业绩报表</span>
+			</div>
+			<div class="table-layer-content">
+				<div class="table-layer-header">
+					<span class="table-layer-title">查看数据-销售业绩报表</span>
+					<span class="table-layer-close" v-on:click="closeLayer"></span>
+				</div>
+				<div class="table-layer-info">
+					<p>显示最新<b>100</b>,共<b>{{tableDetail.count}}</b>条数据&nbsp;最新更新时间：<span>{{tableDetail.last_update}}</span></p>
+				</div>
+				<table class="table table-bordered  table-hover" cellspacing="1" cellpadding="1" border="1">
+					<thead>
+						<tr>
+							<th v-for="theadItem in columns"><span>{{theadItem.title}}</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="tableDataItem in tableData">
+							<td v-for="tdItem in tableDataItem"><span>{{tdItem}}</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="filed-layer" v-show = "filedLayerShow" v-cloak>
+			<div class="table-layer-container">
+				<div class="filed-layer-header">
+					<span class="filed-layer-title">新字段</span>
+					<span class="filed-layer-close" @click = "showFiledLayer"></span>
+				</div>
+				<div class="filed-layer-body">
+					<div class="filed-layer-name">
+						<i-input v-model="newFiledName" placeholder="字段名称"></i-input>
+					</div>
+					<div class="filed-layer-class">
+						<i-input v-model="newFiledClass" type="text" placeholder="请选择字段类型" icon="chevron-down" v-on:on-click="showFiledClass"></i-input>
+						<div class="filed-layer-class-list" v-show="filedLayerClassShow">
+							<ul>
+								<li v-for="(filedLayerArrItem,index) in filedLayerArr" v-on:click="filedClassSelect(index)" ref="selectedItem">{{filedLayerArrItem}}</li>
+							</ul>
+						</div>
+					</div>
+					<div class="filed-layer-formula">
+						<i-input type="textarea" placeholder="请选择计算公式" class="filed-layer-formula-content" rows = 4></i-input>
+					</div>
+					<div class="filed-layer-formula-select clearfix">
+						<div class="handle-option-container">
+							<div class="handle-option-title">函数</div>
+							<ul class="handle-option-list">
+								<li>AVG</li>
+								<li>BASE64_DECODE</li>
+								<li>BASE64_ENCODE</li>
+								<li>BOL</li>
+								<li>CCOALESCE</li>
+								<li>CEIL</li>
+							</ul>
+						</div>
+						<div class="handle-option-container">
+							<div class="handle-option-title">字段名</div>
+							<ul class="handle-option-list">
+								<!-- 数据类型为string的字段 -->
+								<li class="filed-text chart-filed" v-for="strDmsItem in strDmsData" draggable="true">
+									<a href="javascript:0">
+										<i></i>
+										<span class="filed" v-text="strDmsItem.name" v-cloak></span>
+									</a>
+								</li>
+								<!-- 数据类型为number的字段 -->
+								<li class="filed-num chart-filed" v-for="numDmsItem in numDmsData" draggable="true">
+									<a href="javascript:0">
+										<i></i>
+										<span class="filed" v-text="numDmsItem.name" v-cloak></span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="filed-layer-footer clearfix">
+					<div class="table-layer-decide">
+						<button class="table-layer-cancel" @click = "showFiledLayer">取消</button>
+						<button class="table-layer-submit" @click = "showFiledLayer">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/echarts.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/vue-resource.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{
+	"result": {
+		"data": [
+			{
+				"category_id": "bm",
+				"img_src": "image/bm_1.png",
+				"category_name": "八爪鱼"
+			},
+			{
+				"category_id": "bm",
+				"img_src": "image/bm_2.png",
+				"category_name": "Excel上传"
+			},
+			{
+				"category_id": "bm",
+				"img_src": "image/bm_3.png",
+				"category_name": "滴滴企业版"
+			},
+			{
+				"category_id": "bm",
+				"img_src": "image/bm_4.png",
+				"category_name": "携程商旅"
+			},
+			{
+				"category_id": "bm",
+				"img_src": "image/bm_5.png",
+				"category_name": "表单大师"
+			}
+		]
+	},
+	"returncode": 0,
+	"message": "ok"
+}

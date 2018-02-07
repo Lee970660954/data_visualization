@@ -1,0 +1,33 @@
+{
+	"result": {
+		"data": [
+			{
+				"category_id": "nm",
+				"img_src": "image/nm_1.png",
+				"category_name": "微信公众平台"
+			},
+			{
+				"category_id": "nm",
+				"img_src": "image/nm_2.png",
+				"category_name": "百度搜索推广"
+			},
+			{
+				"category_id": "nm",
+				"img_src": "image/nm_3.png",
+				"category_name": "微信小程序"
+			},
+			{
+				"category_id": "nm",
+				"img_src": "image/nm_4.png",
+				"category_name": "百度搜索推广（小户）"
+			},
+			{
+				"category_id": "nm",
+				"img_src": "image/nm_5.png",
+				"category_name": "网易新闻易效推广"
+			}
+		]
+	},
+	"returncode": 0,
+	"message": "ok"
+}

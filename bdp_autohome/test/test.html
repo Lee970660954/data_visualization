@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test1</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var filterObj = {
+		f1: ["f11","f12","f13"],
+		f2: ["f21","f22","f23"],
+		f3: ["f31","f32","f33"],
+		f4: ["f41","f42","f43"]
+	};
+		var url = "http://10.23.240.21:8080/index/table/_filter?tops=100&_callback=?&name=f1&filters=";
+		// for(var key in filterObj){
+		// 	urlParam += key + ":";
+		// 	for(var i = 0;i<filterObj[key].length;i++){
+		// 		if(i < filterObj[key].length-1){
+		// 			urlParam += filterObj[key][i] + ",";
+		// 		}else{
+		// 			urlParam += filterObj[key][filterObj[key].length-1] + ";";
+		// 		}
+		// 	}
+		// }
+		// console.log(urlParam);
+		function connectFilterUrl(url,object){
+		var urlParam = url;
+		for(var key in object){
+			urlParam += key + ":";
+			for(var i = 0;i<object[key].length;i++){
+				if(i < object[key].length-1){
+					urlParam += object[key][i] + ",";
+				}else{
+					urlParam += object[key][object[key].length-1] + ";";
+				}
+			}
+		}
+		return url = urlParam;
+	}
+	console.log(connectFilterUrl(url,filterObj));
+	function connectFilterParam(object){
+		var urlParam = "";
+		if(JSON.stringify(object) != "{}"){
+			for(var key in object){
+				if(object[key].length != 0){
+					urlParam += key + ":";
+					for(var i = 0;i<object[key].length;i++){
+						if(i < object[key].length-1){
+							urlParam += object[key][i] + ",";
+						}else{
+							urlParam += object[key][object[key].length-1] + ";";
+						}
+					}
+				}				
+			}
+			if(urlParam){
+				return url = urlParam;
+			}else{
+				return url = null;
+			}			
+		}else{
+			return url = null;
+		}
+		
+	}
+	</script>
+</body>
+</html>

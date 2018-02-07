@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>data_source</title>
+	<link rel="stylesheet" type="text/css" href="css/iview.css">
+	<link rel="stylesheet" type="text/css" href="css/data_source.css">
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/iview.js"></script>
+</head>
+<body>
+	<header>
+		<h2 class="header-text">OlapX</h2>
+		<ul class="header-nav">
+			<li class="header-nav-item" data-selected="false" data-tab="dash-board"><div>仪表盘</div></li>
+			<li class="header-nav-item" data-selected="false" data-tab="work-sheet"><div>工作表</div></li>
+			<li class="header-nav-item" data-selected="true" data-tab="data-source"><div>数据源</div></li>
+			<li class="header-nav-item" data-selected="false" data-tab="chart-edit"><div>设计表</div></li>
+		</ul>
+	</header>
+	<div class="source-container">
+		<div class="source-header">
+			<div class="source-header-top">
+				<p class="source-heaer-title">数据源</p>
+				<div class="source-header-detial">
+					<span>容量</span>
+					{{storage.expend}}M / {{storage.totality}}M
+				</div>
+				<div class="add-data-source" @click = "addDataSource">
+					<i></i>
+					<span>添加数据源</span>
+				</div>
+			</div>
+			<div class="source-header-bottom">
+				<ul class="source-header-list clearfix">
+					<li class="source-header-item">
+						<div class="item-container">
+							<ul class="item-content">
+								<li class="item-title">全部</li>
+								<li class="item-amount">2</li>
+							</ul>
+						</div>
+					</li>
+					<li class="source-header-item">
+						<div class="item-container">
+							<ul class="item-content">
+								<li class="item-title">同步完成</li>
+								<li class="item-amount">2</li>
+							</ul>
+						</div>
+					</li>
+					<li class="source-header-item">
+						<div class="item-container">
+							<ul class="item-content">
+								<li class="item-title">正在同步</li>
+								<li class="item-amount">0</li>
+							</ul>
+						</div>
+					</li>
+					<li class="source-header-item">
+						<div class="item-container">
+							<ul class="item-content">
+								<li class="item-title">失败</li>
+								<li class="item-amount">0</li>
+							</ul>
+						</div>
+					</li>
+					<li class="source-header-item">
+						<div class="item-container">
+							<ul class="item-content">
+								<li class="item-title">停用</li>
+								<li class="item-amount">0</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="source-body">
+			<div class="source-body-left">
+				<div class="source-body-left-top">
+					<div class="source-body-lt-detail source-body-lt" v-show="!searchShow">
+						<span class="source-body-left-title">我的数据源</span>
+						<i class="source-body-left-search" @click="getSearch"></i>
+					</div>
+					<div class="source-body-lt-search source-body-lt" v-show="searchShow">
+						<i-input icon="search" placeholder="搜索数据源名称或标签" autofocus @on-blur="getSearch"></i-input>
+					</div>
+				</div>
+				<div class="source-body-left-bottom">
+					<ul class="source-body-left-list">
+						<li class="source-body-left-item">
+							<span class="source-body-left-itemname">公共数据</span>
+							<span class="source-body-left-itemnum">0</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="source-body-right">
+				<div class="source-body-content">
+					<table class="source-body-table">
+						<thead>
+							<tr>
+								<th class="th-name">
+									<span>名称</span>
+									<i></i>
+								</th>
+								<th class="th-state">
+									<span>状态</span>
+									<i></i>
+								</th>
+								<th class="th-sync">
+									<span>最近同步时间</span>
+									<i></i>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="td-name">
+									<div class="td-name-img">
+									</div>
+									<div class="td-name-link">人口数据</div>
+								</td>
+								<td class="td-state">2</td>
+								<td class="td-sync">3</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/vue-resource.js"></script>
+	<script type="text/javascript" src="js/vue-router.js"></script>
+	<script type="text/javascript" src="js/vuex.js"></script>
+	<script type="text/javascript" src="js/data_source.js"></script>
+</body>
+</html>
